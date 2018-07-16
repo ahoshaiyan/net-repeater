@@ -3,7 +3,7 @@
  * A simple repeater that makes names ready for the .NET MVC binder.
  *
  * @license No License
- * @version 0.1
+ * @version 0.1.2
  * @author  Ali Alhoshaiyan
  * @updated 2018-07-16
  */
@@ -29,6 +29,14 @@ function indexItem($repeaterItem) {
 function initItemInputs($repeaterItem) {
     // Save original name for each input
     $repeaterItem.find('input').each(function() {
+        var name = $(this).attr('name');
+        if(name !== null) {
+            $(this).attr('item-name', name);
+        }
+    });
+
+    // Special TextArea case
+    $repeaterItem.find('textarea').each(function() {
         var name = $(this).attr('name');
         if(name !== null) {
             $(this).attr('item-name', name);
