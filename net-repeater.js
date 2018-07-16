@@ -43,6 +43,14 @@ function initItemInputs($repeaterItem) {
         }
     });
 
+    // Special Select case
+    $repeaterItem.find('select').each(function() {
+        var name = $(this).attr('name');
+        if(name !== null) {
+            $(this).attr('item-name', name);
+        }
+    });
+
     // Save the original for attribute for each element that uses it
     $repeaterItem.find('[for]').each(function() {
         $(this).attr('item-for', $(this).attr('for'));
